@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //总的来说 forEach 和 indexOf都是遍历数组，双重循环效率慢
+
+        var arr = [1, 2, 3, 1]
+
+        // Array.prototype.qc = function () {
+        //     const arr = []
+        //     this.forEach(item => {
+        //         if (arr.indexOf(item) === -1) {
+        //             console.log('进来了');
+        //             arr.push(item)
+        //         }
+        //     })
+        //     return arr
+        // }
+        // console.log(arr.qc());
+
+
+        var arr2 = []       //用来存去重后的数组
+        arr.forEach(item => {
+            if (arr2.indexOf(item) == -1) {
+                arr2.push(item)
+            }
+        })
+        console.log(arr2);
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Array.prototype.qc = function () {
+        //     const arr = []
+        //     const obj = {}
+
+        //     this.forEach((item) => {
+        //         if(!obj.hasOwnProperty(item)){
+        //             obj[item] = true
+        //             arr.push(item)
+        //         }
+        //     })
+
+        //     return arr
+        // }
+
+        const arr = [1, 2, 3, 1]
+        // console.log(arr.qc());
+
+        
+
+        const arr1 = []
+        const obj = {}
+        arr.forEach((item) => {
+            if (!obj.hasOwnProperty(item)) {
+                obj[item] = true
+                arr1.push(item)
+            }
+            console.log(item,arr1);
+        })
+
+        console.log(arr1);
+    </script>
+</body>
+
+</html>

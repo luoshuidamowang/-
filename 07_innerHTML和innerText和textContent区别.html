@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+
+    </div>
+
+
+    <div id="demo2">
+
+    </div>
+
+    <script>
+        let div = document.querySelector('#demo')
+        console.log(div.innerHTML); //不解析的拿到带标签、拿到所有样式
+        console.log(div.innerText); //不带样式的123
+        console.log(div.textContent); //带样式的拿到1 2 3
+
+
+        let div2 = document.querySelector('#demo2')
+        div2.innerHTML= '     <h1>      11111111</h1>'
+        // div2.innerText= '     <h1>      11111111</h1>'
+        // div2.textContent ='   <h1>      11111111</h1>'
+    </script>
+</body>
+
+</html>

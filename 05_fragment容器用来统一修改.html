@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo">
+        <ul>
+            <li> 看我能不能修改 </li>
+            <li> 看我能不能修改 </li>
+            <li> 看我能不能修改 </li>
+            <li> 看我能不能修改 </li>
+            <li> 看我能不能修改 </li>
+        </ul>
+    </div>
+
+
+    <script>
+        //创建fragment
+        // let fragment = new DocumentFragment()                //两种方式都可以
+        let fragment = document.createDocumentFragment()        //两种方式都可以
+        let div = document.getElementById('demo')
+
+        //把页面内容放入fragment
+        let child
+        while (child = div.firstChild) {
+            fragment.appendChild(child)
+        }
+
+        let lis = fragment.children[0].children
+
+        //把fragment里面的li统一修改         
+        Array.prototype.slice.call(lis).forEach((item) => {
+            item.innerHTML = 'xmt'
+        })
+
+        //把fragment放入div
+        div.appendChild(fragment)
+    </script>
+</body>
+
+</html>

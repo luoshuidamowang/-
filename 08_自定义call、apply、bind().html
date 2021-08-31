@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 自定义函数对象的call/apply方法 */
+        Function.prototype.call = function (obj, ...argumentsArr) {
+            // 如果传入的是null/undefined, this指定为window
+            obj = obj || window
+            // 给obj添加一个方法: 属性名任意, 属性值必须当前调用call的函数对象 这里this就是当前调用call的函数
+            obj.fn = this
+            // 通过obj调用这个方法
+            obj.fn(...argumentsArr)
+            // 删除新添加的方法：f1.call(obj) 因为调用的参数对象obj并不会真的增加属性，而是借此调用方法
+            delete obj.fn
+        }
+
+        //例子
+        // obj = {}
+
+        // function f1(a, b) {
+        //     console.log(a, b);
+        //     document.write(`a:${a},b:${b}`)
+        // }
+        // f1.call(obj, 1, 2)
+
+
+
+        //自定义函数对象的bind方法//写法错误 待定
+        // Function.prototype.bind = function (obj, ...args) {
+        //     return (...args2) => {
+        //         this.call(obj, ...args, ...args2)
+        //     }
+        // }
+
+
+        //bind 的第一个参数会作为原函数运行时的 this 指向，不多说；而第二个开始的参数是可选的，当绑定函数被调用时，
+        //这些参数加上绑定函数本身的参数会按照顺序作为原函数运行时的参数
+        function fn(a, b, c) {
+            return a + b + c;
+        }
+
+        var fn2 = fn.bind(null, 10);
+        var ans = fn2(20, 30); // 60
+        console.log(ans);
+    </script>
+</body>
+
+</html>

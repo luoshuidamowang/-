@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 功能等同于instanceof的工具函数
+        function instanceOf(instance, Type) {
+            while (instance.__proto__) {                 //当顺着原型链一直找，找到最后为null，循环进不去了，return false
+                if (instance.__proto__ === Type.prototype) {   //原形对象是否是同一个原形对象
+                    return true
+                }
+                instance = instance.__proto__           //顺着原型链一直找
+            }
+            return false
+        }
+
+            let obj = {}
+            let arr = []
+
+            console.log (instanceOf(obj ,Array) );
+            // console.log (arr instanceOf Array);
+    
+    </script>
+</body>
+
+</html>

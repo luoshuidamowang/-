@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>defineProperty双向数据绑定</title>
+</head>
+
+<body>
+
+    <script>
+        var p = {
+            firstName: 'a',
+            childName: 'b'
+        }
+
+        Object.defineProperty(p, 'fullName', {
+            configurable: true, //是否可以defined定义
+            enumerable: true, //是否可以枚举
+
+            get() {
+                return this.firstName + "-" + this.childName
+            },
+
+            set(value) {
+                const names = value.split('-')
+                this.firstName = names[0]
+                this.childName = names[1]
+            }
+
+        })
+
+
+        for(let item in p){
+            console.log(item,p[item]);
+        }
+
+        p.fullName = 'c-d'
+
+        for(let item in p){
+            console.log(item,p[item]);
+        }
+
+    </script>
+
+</body>
+
+</html>

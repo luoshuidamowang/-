@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="f1()">函数防抖</button>
+
+    <br>
+
+    <button onclick="f2()">函数节流</button>
+
+
+    <script>
+        var btn = document.getElementsByTagName('button')
+        console.log(btn);
+
+        //函数防抖
+        var t = null;
+
+        function f1() {
+            clearTimeout(t); //每次触发，都把前面的定时器关闭，尽管第一次定时器并不存在
+            t = setTimeout(function () { //开启新的定时器
+                //ajax(...); 发送请求到服务器
+                console.log('防抖');
+            }, 300);
+        }
+
+
+
+        //函数节流
+        var cd = true; //是否可以触发
+        function f2() {
+            if (cd) {
+                console.log('节流');        
+                cd = false             //触发之后关掉，等定时器打开来实现下一次触发和关掉，以此循环
+                setTimeout(() => {  
+                    cd = true
+                }, 2000)
+            }
+        }
+        document.addEventListener('mousemove', f2)
+    </script>
+</body>
+
+</html>
